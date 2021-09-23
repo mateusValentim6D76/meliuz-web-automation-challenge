@@ -40,29 +40,37 @@ public class PesquisaProdutoPage {
 	@FindBy (how = How.LINK_TEXT, using = "Add to cart")
 	private static WebElement addCarrinho;
 	
+	@FindBy (how = How.XPATH, using = ".//p[@class='product-desc'][contains(.,'Short sleeved blouse with feminine')]")
+	private static WebElement assertBlouse;
+
+	
 		
-	public void inputBuscaPorProduto(String buscarProduto) {
+	private void inputBuscaPorProduto(String buscarProduto) {
 		wait.until(ExpectedConditions.visibilityOf(inputBuscaProduto));
 		inputBuscaProduto.sendKeys(buscarProduto);
 		botaoPesquisarProduto.click();
+		listarProdutos.click();
 	}
 	
-	public void adicionarProdutoAoCarrinho() {
-		js.scrollDown();
-		listarProdutos.click();
+	public boolean assertBlouseIsDisplay() {
+		wait.until(ExpectedConditions.visibilityOf(assertBlouse));
+		return assertBlouse.isDisplayed();
+	}
+	
+	private void adicionarProdutoAoCarrinho() {
 		actions.moveToElement(addCarrinho);	
-		addCarrinho.click();
+		addCarrinho.click();		
 	}
 		
-//	public boolean loading() {
-//		wait.until(ExpectedConditions.visibilityOf(loading));
-//		return loading.isDisplayed();
-//
-//	}
-	
 	public void buscaProdutoExistenteAction(PesquisaProdutoExistentePojo produtoExistenteData) throws InterruptedException {
 		inputBuscaPorProduto(produtoExistenteData.pesquisaBlouse);
+		
+	}
+	
+	
+	public void adicionaOProdutoAoCarrinhoAction() throws InterruptedException {
 		adicionarProdutoAoCarrinho();
+	
 	}
 	
 }

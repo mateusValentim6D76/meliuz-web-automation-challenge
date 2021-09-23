@@ -2,6 +2,7 @@ package steps;
 
 import java.util.Map;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.TestContext;
@@ -29,18 +30,18 @@ public class PesquisaProdutoSteps {
 	public void preencho_o_campo_com_o_produto_existente(String dados) throws Throwable {
 		PesquisaProdutoExistentePojo produtoExistenteData = FileReaderManager.getInstance().getJsonReader().getProduto(dados);
 		pesquisaProdutoPage.buscaProdutoExistenteAction(produtoExistenteData);
+		
 	}
 
 	@Quando("^sera exibido o resultado da pesquisa$")
 	public void sera_exibido_o_resultado_da_pesquisa() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		Assert.assertTrue(pesquisaProdutoPage.assertBlouseIsDisplay());
+
 	}
 
 	@Entao("^vou adicionar o produto ao carrinho$")
 	public void vou_adicionar_o_produto_ao_carrinho() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		pesquisaProdutoPage.adicionaOProdutoAoCarrinhoAction();
 	}
 
 }
