@@ -15,14 +15,14 @@ import testDataType.PesquisaProdutoExistentePojo;
 
 public class PesquisaProdutoSteps {
 
-	protected PesquisaProdutoPage pesquisaProdutoPage;
-	protected WebDriver driver;
+	private PesquisaProdutoPage pesquisaProdutoPage;
+	private WebDriver driver;
 	private TestContext testContext;
 
 	public PesquisaProdutoSteps(TestContext context) {
-		this.driver = testContext.getWebDriverManager().getDriver();
-		this.testContext = context;
-		this.pesquisaProdutoPage = testContext.getPageObjectManager().getpesquisaProdutoPage();
+		testContext = context;
+		driver = testContext.getWebDriverManager().getDriver();
+		pesquisaProdutoPage = testContext.getPageObjectManager().getpesquisaProdutoPage();
 	}
 
 	@Quando("^preencho o campo com o produto existente \"([^\"]*)\"$")
