@@ -1,11 +1,9 @@
 package core;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +17,7 @@ public class BasePage {
     private WebDriver driver;
     private WebDriverWait wait;
     private JavascriptExecutor js;
+    private static Actions actions;
     private PesquisaProdutoPage send;
    
 
@@ -27,6 +26,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(this.driver,10);
         js = (JavascriptExecutor) this.driver;
+        actions = new Actions(driver);
     }
 
     @FindBy (how = How.ID, using = "nav_automobile")
@@ -64,4 +64,12 @@ public class BasePage {
     	wait.until(ExpectedConditions.visibilityOf(radioButtonPlatinum));
     	radioButtonPlatinum.click();
     }
+    
+    protected static void moveToElement(WebElement elemento) {
+		try {
+			actions.moveToElement(elemento);
+		} catch (Exception e) {
+			System.out.println("Nao foi possivel mover o mouse para o elemento");
+		}
+	}
 }
