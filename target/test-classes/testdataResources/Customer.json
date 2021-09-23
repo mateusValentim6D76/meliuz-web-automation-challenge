@@ -1,0 +1,12 @@
+[
+  {
+    "make": "Volkswagen",
+    "enginePerformanceKw": "15",
+    "inputCalendarDate": "07/07/2020",
+    "numberOfSeats": "5",
+    "fuelType": "Petrol",
+    "inputListPrice": "57000",
+    "inputLicensePlateNumber": "ehy2408",
+    "inputAnnualMileage": "2014"
+  }
+]
