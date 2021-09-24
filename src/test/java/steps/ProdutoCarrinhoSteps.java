@@ -10,18 +10,18 @@ import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
-import pageFactory.PesquisaProdutoPage;
+import pageFactory.HomePage;
 
 public class ProdutoCarrinhoSteps {
 
-	private PesquisaProdutoPage pesquisaProdutoPage;
+	private HomePage pesquisaProdutoPage;
 	private WebDriver driver;
 	private TestContext testContext;
 
 	public ProdutoCarrinhoSteps(TestContext context) {
 		testContext = context;
 		driver = testContext.getWebDriverManager().getDriver();
-		pesquisaProdutoPage = testContext.getPageObjectManager().getpesquisaProdutoPage();
+		pesquisaProdutoPage = testContext.getPageObjectManager().getHomePage();
 	}
 	
 	@Quando("^preencho o campo com um produto$")

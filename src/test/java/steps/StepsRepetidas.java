@@ -2,7 +2,6 @@ package steps;
 
 import org.openqa.selenium.WebDriver;
 
-import core.BasePage;
 import cucumber.TestContext;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.it.Quando;
@@ -12,12 +11,12 @@ public class StepsRepetidas {
 	
 	private WebDriver driver;
 	private TestContext testContext;
-	private BasePage basePage;
+	//private BasePage basePage;
 	
 	public StepsRepetidas(TestContext contexto) {
 		this.testContext = contexto;
 		driver = testContext.getWebDriverManager().getDriver();
-		basePage = testContext.getPageObjectManager().getBasePage();
+		//basePage = testContext.getPageObjectManager().getBasePage();
 	}
 	
 	@Dado("^que estou na tela home$")

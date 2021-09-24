@@ -1,5 +1,6 @@
 package pageFactory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,18 +13,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import testDataType.PesquisaProdutoExistentePojo;
 import util.JsScroll;
 
-public class PesquisaProdutoPage {
+public class HomePage {
 
 	private WebDriverWait wait;
 	private WebDriver driver;
 	private JsScroll js;
 	private static Actions actions;
 
-	public PesquisaProdutoPage(WebDriver driver) {
+	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(this.driver, 10);
-		js = new JsScroll(driver);
+		//js = new JsScroll(driver);
 		actions = new Actions(driver);
 	}
 
@@ -50,6 +51,9 @@ public class PesquisaProdutoPage {
 
 	@FindBy(how = How.CSS, using = "ul#order_step li.step_current.first")
 	private static WebElement assertStepSummary;
+	
+	@FindBy(how = How.CSS, using = "div#block_top_menu li a[title='Women']")
+	private static WebElement womenCategory;
 
 	private void inputBuscaPorProduto(String buscarProduto) {
 		wait.until(ExpectedConditions.visibilityOf(inputBuscaProduto));
@@ -79,6 +83,10 @@ public class PesquisaProdutoPage {
 	private void listarProdutos() {
 		actions.moveToElement(listarProdutos);
 		listarProdutos.click();
+	}
+	
+	private void categoriaWomen() {
+		actions.moveToElement(womenCategory).perform();	
 	}
 
 	////// Actions //////
@@ -119,5 +127,17 @@ public class PesquisaProdutoPage {
 	public void listarProdutosAction() {
 		listarProdutos();
 	}
+	
+	public void categoryWomenAction() {
+		categoriaWomen();
+	}
+	
+	public void subCategoriasHome(String subCategory) {
+		//String subCat = "ul.submenu-container.clearfix.first-in-line-xs li ul li a[title='Summer Dresses']";
+		WebElement elemento = driver.findElement(By.cssSelector("ul.submenu-container.clearfix.first-in-line-xs li ul li a[title='"+subCategory+"']"));
+		elemento.click();
+	}
+	
+	
 
 }
