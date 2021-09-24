@@ -1,7 +1,7 @@
 #language: pt
 
 
-Funcionalidade: Preencher dados completos do cliente
+Funcionalidade: Procurar produto existente
 
   Contexto:
     Dado que estou na tela home
@@ -17,3 +17,4 @@ Funcionalidade: Preencher dados completos do cliente
       | produtoExistente | 
       | Blouse  |
       
+     

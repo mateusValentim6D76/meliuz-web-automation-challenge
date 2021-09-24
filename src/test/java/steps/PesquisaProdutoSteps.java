@@ -1,5 +1,7 @@
 package steps;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Map;
 
 import org.junit.Assert;
@@ -28,9 +30,10 @@ public class PesquisaProdutoSteps {
 
 	@Quando("^preencho o campo com o produto existente \"([^\"]*)\"$")
 	public void preencho_o_campo_com_o_produto_existente(String dados) throws Throwable {
-		PesquisaProdutoExistentePojo produtoExistenteData = FileReaderManager.getInstance().getJsonReader().getProduto(dados);
+		PesquisaProdutoExistentePojo produtoExistenteData = FileReaderManager.getInstance().getJsonReader()
+				.getProduto(dados);
 		pesquisaProdutoPage.buscaProdutoExistenteAction(produtoExistenteData);
-		
+
 	}
 
 	@Quando("^sera exibido o resultado da pesquisa$")
@@ -44,4 +47,16 @@ public class PesquisaProdutoSteps {
 		pesquisaProdutoPage.adicionaOProdutoAoCarrinhoAction();
 	}
 
+	@Quando("^preencho o campo com produto inexistente$")
+	public void preencho_o_campo_com_produto_inexistente(DataTable dados) throws Throwable {
+		for (Map<String, String> dado : dados.asMaps(String.class, String.class)) {
+			pesquisaProdutoPage.buscaProdutoInexistenteAction(dado.get("produto"));
+
+		}
+	}
+
+	@Entao("^verifico a mensagem que o produto nao existe$")
+	public void verifico_a_mensagem_que_o_produto_nao_existe() throws Throwable {
+		Assert.assertTrue(pesquisaProdutoPage.assertProdutoNaoExistente());
+	}
 }

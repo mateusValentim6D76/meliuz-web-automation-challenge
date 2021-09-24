@@ -7,11 +7,11 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith (Cucumber.class)
 @CucumberOptions(
-        features = "feature/pesquisaProduto.feature",
+        features = "feature/pesquisaProdutoInexistente.feature",
         glue = {"steps"},
-        tags = {"BuscaPorProdutoFeliz"},
+        tags = {"@BuscaProdutoTriste"},
         plugin = {"pretty"}
 )
-public class Runner {
+public class RunnerProdutoNaoExistente {
 
 }
