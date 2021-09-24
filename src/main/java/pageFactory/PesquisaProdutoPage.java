@@ -41,9 +41,15 @@ public class PesquisaProdutoPage {
 
 	@FindBy(how = How.XPATH, using = ".//p[@class='product-desc'][contains(.,'Short sleeved blouse with feminine')]")
 	private static WebElement assertBlouse;
-	
+
 	@FindBy(how = How.XPATH, using = ".//div[@id='center_column']/*/span[contains(.,'0 results')]")
 	private static WebElement assertProdutoNaoExistente;
+
+	@FindBy(how = How.XPATH, using = ".//a/span[contains(.,'Proceed to')]")
+	private static WebElement buttonProceedToCart;
+
+	@FindBy(how = How.CSS, using = "ul#order_step li.step_current.first")
+	private static WebElement assertStepSummary;
 
 	private void inputBuscaPorProduto(String buscarProduto) {
 		wait.until(ExpectedConditions.visibilityOf(inputBuscaProduto));
@@ -58,21 +64,42 @@ public class PesquisaProdutoPage {
 		botaoPesquisarProduto.click();
 	}
 
+	private void inputBuscaPorProdutoInserirCarrinho(String buscarProduto) {
+		wait.until(ExpectedConditions.visibilityOf(inputBuscaProduto));
+		inputBuscaProduto.sendKeys(buscarProduto);
+		botaoPesquisarProduto.click();
+	}
+
+	private void inserirProdAoCarrinho() {
+		actions.moveToElement(addCarrinho);
+		addCarrinho.click();
+		buttonProceedToCart.click();
+	}
+
+	private void listarProdutos() {
+		actions.moveToElement(listarProdutos);
+		listarProdutos.click();
+	}
+
+	////// Actions //////
+
 	public boolean assertBlouseIsDisplay() {
 		wait.until(ExpectedConditions.visibilityOf(assertBlouse));
 		return assertBlouse.isDisplayed();
 	}
-	
+
+	public boolean assertSummaryIsDisplay() {
+		wait.until(ExpectedConditions.visibilityOf(assertStepSummary));
+		return assertStepSummary.isDisplayed();
+	}
+
 	public boolean assertProdutoNaoExistente() {
 		wait.until(ExpectedConditions.visibilityOf(assertProdutoNaoExistente));
 		return assertProdutoNaoExistente.isDisplayed();
-
 	}
 
-
-	private void adicionarProdutoAoCarrinho() {
-		actions.moveToElement(addCarrinho);
-		addCarrinho.click();
+	public void adicionarProdutoAoCarrinhoAction() {
+		inserirProdAoCarrinho();
 	}
 
 	public void buscaProdutoExistenteAction(PesquisaProdutoExistentePojo produtoExistenteData)
@@ -82,12 +109,15 @@ public class PesquisaProdutoPage {
 	}
 
 	public void buscaProdutoInexistenteAction(String busca) throws InterruptedException {
-		inputBuscaPorProdutoInexistente(busca);		
+		inputBuscaPorProdutoInexistente(busca);
 	}
 
-	public void adicionaOProdutoAoCarrinhoAction() throws InterruptedException {
-		adicionarProdutoAoCarrinho();
+	public void buscaProdutoInserirCarrinhoAction(String busca) throws InterruptedException {
+		inputBuscaPorProdutoInserirCarrinho(busca);
+	}
 
+	public void listarProdutosAction() {
+		listarProdutos();
 	}
 
 }

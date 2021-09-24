@@ -12,6 +12,6 @@ import cucumber.api.junit.Cucumber;
         tags = {"@BuscaProdutoTriste"},
         plugin = {"pretty"}
 )
-public class RunnerProdutoNaoExistente {
+public class ProdutoNaoExistenteRunner {
 
 }

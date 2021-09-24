@@ -1,6 +1,5 @@
 package steps;
 
-import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
@@ -9,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 import cucumber.TestContext;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import manager.FileReaderManager;
@@ -44,7 +42,7 @@ public class PesquisaProdutoSteps {
 
 	@Entao("^vou adicionar o produto ao carrinho$")
 	public void vou_adicionar_o_produto_ao_carrinho() throws Throwable {
-		pesquisaProdutoPage.adicionaOProdutoAoCarrinhoAction();
+		pesquisaProdutoPage.adicionarProdutoAoCarrinhoAction();
 	}
 
 	@Quando("^preencho o campo com produto inexistente$")
