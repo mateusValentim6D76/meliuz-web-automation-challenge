@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         features = "feature/produtoCarrinho.feature",
         glue = {"steps"},
-        tags = {"@AdicionarProdutoCarrinho"},
+        tags = {"@RetirarProdutoCarrinho"},
         plugin = {"pretty"}
 )
 public class ProdutoCarrinhoRunner {

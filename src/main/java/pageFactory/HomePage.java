@@ -24,7 +24,6 @@ public class HomePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(this.driver, 10);
-		//js = new JsScroll(driver);
 		actions = new Actions(driver);
 	}
 
@@ -54,7 +53,23 @@ public class HomePage {
 	
 	@FindBy(how = How.CSS, using = "div#block_top_menu li a[title='Women']")
 	private static WebElement womenCategory;
+	
+	@FindBy(how = How.CSS, using = "div.shopping_cart a[title='View my shopping cart']")
+	private static WebElement carrinhoTelaHome;
+	
+	/*Click estatico o ideal seria uma tabela dinamica para clicar no produto desejado
+	porem o elemento nao e uma tabela, impossibilitando tal manipulacao
+	*/
+	@FindBy(how = How.CSS, using = "a.cart_quantity_delete")
+	private static WebElement clickRemoveToCart;
+	
+	@FindBy(how = How.CSS, using = "span[title='Continue shopping']")
+	private static WebElement continueShopping;
+	
+	@FindBy(how = How.ID, using = "header_logo")
+	private static WebElement headerLogo;
 
+	
 	private void inputBuscaPorProduto(String buscarProduto) {
 		wait.until(ExpectedConditions.visibilityOf(inputBuscaProduto));
 		inputBuscaProduto.sendKeys(buscarProduto);
@@ -79,6 +94,12 @@ public class HomePage {
 		addCarrinho.click();
 		buttonProceedToCart.click();
 	}
+	
+	private void inserirProdAoCarrinhoEVoltar() {
+		listarProdutos.click();
+		actions.moveToElement(addCarrinho);
+		addCarrinho.click();
+	}
 
 	private void listarProdutos() {
 		actions.moveToElement(listarProdutos);
@@ -87,6 +108,22 @@ public class HomePage {
 	
 	private void categoriaWomen() {
 		actions.moveToElement(womenCategory).perform();	
+	}
+	
+	private void clicarCarrinhoHome() {
+		carrinhoTelaHome.click();
+	}
+	
+	private void removeToCart() {
+		clickRemoveToCart.click();
+	}
+	
+	private void continueShopping() {
+		continueShopping.click();
+	}
+	
+	private void clickLogo() {
+		headerLogo.click();
 	}
 
 	////// Actions //////
@@ -133,11 +170,29 @@ public class HomePage {
 	}
 	
 	public void subCategoriasHome(String subCategory) {
-		//String subCat = "ul.submenu-container.clearfix.first-in-line-xs li ul li a[title='Summer Dresses']";
 		WebElement elemento = driver.findElement(By.cssSelector("ul.submenu-container.clearfix.first-in-line-xs li ul li a[title='"+subCategory+"']"));
 		elemento.click();
 	}
 	
+	public void clicarCarrinhoHomeAction() {
+		clicarCarrinhoHome();
+	}
+	
+	public void remoteToCartAction() {
+		removeToCart();
+	}
+	
+	public void btnContinueShoppingAction() {
+		continueShopping();
+	}
+	
+	public void clickHeaderLogoAction() {
+		clickLogo();
+	}
+	
+	public void inserirProdutoEVoltarAction() {
+		inserirProdAoCarrinhoEVoltar();
+	}
 	
 
 }
