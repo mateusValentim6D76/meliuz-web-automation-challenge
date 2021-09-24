@@ -5,7 +5,7 @@ Funcionalidade: Adicionar e remover produto no carrinho
     Dado que estou na tela home
     Quando busco por um produto
 
-  @AdicionarProdutoCarrinho 
+  @AdicionarProdutoCarrinho
   Cenario: Busca por produto que  existe no site e adicionar ao carrinho
     E preencho o campo com um produto
       | produto |
@@ -13,7 +13,7 @@ Funcionalidade: Adicionar e remover produto no carrinho
     E adiciono ele ao carrinho
     Entao verifico a mensagem da tela de confirmacao
 
-  @RetirarProdutoCarrinho 
+  @RetirarProdutoCarrinho
   Cenario: Retirar produto do carrinho
     E preencho o campo com um produto
       | produto |
@@ -23,3 +23,4 @@ Funcionalidade: Adicionar e remover produto no carrinho
     E clico no logo localizado ao canto superior esquerdo
     Entao clico no carrinho localizado na home
     E retiro o produto do carrinho
+    E verifico a mensagem 'Your shopping cart is empty'

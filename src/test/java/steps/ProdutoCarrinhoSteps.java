@@ -1,5 +1,7 @@
 package steps;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.Map;
 
 import org.junit.Assert;
@@ -66,6 +68,11 @@ public class ProdutoCarrinhoSteps {
 	public void retiro_o_produto_do_carrinho() throws Throwable {
 		homePage.remoteToCartAction();
 
+	}
+	
+	@Entao("^verifico a mensagem 'Your shopping cart is empty'$")
+	public void verifico_a_mensagem_Your_shopping_cart_is_empty() throws Throwable {
+	    assertTrue(homePage.assertCarrinhoVazioIsDisplay());
 	}
 
 }
