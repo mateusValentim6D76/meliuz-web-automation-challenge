@@ -2,12 +2,14 @@ package manager;
 
 import org.openqa.selenium.WebDriver;
 
+import pageFactory.CadastroPage;
 import pageFactory.HomePage;
 
 public class PageObjectManager {
 
     private WebDriver driver;
-    private HomePage pesquisaProdutoPage;
+    private HomePage homePage;
+    private CadastroPage cadastroPage;
 
     public PageObjectManager (WebDriver driver) {
         this.driver = driver;
@@ -15,6 +17,9 @@ public class PageObjectManager {
 
     
     public HomePage getHomePage () {
-    	return (pesquisaProdutoPage == null) ? pesquisaProdutoPage = new HomePage(driver) : pesquisaProdutoPage;
+    	return (homePage == null) ? homePage = new HomePage(driver) : homePage;
+    }
+    public CadastroPage getCadastroPage () {
+    	return (cadastroPage == null) ? cadastroPage = new CadastroPage(driver) : cadastroPage;
     }
 }

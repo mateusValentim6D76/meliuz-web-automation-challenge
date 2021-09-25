@@ -1,0 +1,24 @@
+[
+	{	
+		"email":"mateus.valentim19@hotmail.com",
+		"primeiroNome": "Mateus",
+		"sobrenome": "Valentim",
+		"senha": "p0o9i8",
+		"diaNiver": 16,
+		"mesNiver": "November",
+		"anoNiver": "1996",
+		"primeiroNomeEtapa2": "Mateus",
+		"sobrenomeEtapa2": "Valentim",
+		"empresa": "PayGo",
+		"endereco": "Rua Augusta",
+		"endereco2": "Avenida Nove de Julho",
+		"cidade": "Alaska",
+		"estado": "Alaska",
+		"cep": "00000",
+		"pais": "United States",
+		"infoAdicional": "Próximo ao Canada",
+		"telefone": "1136084556",
+		"celular": "11930044558",
+		"referencia": "Sem referencia"
+	}
+]

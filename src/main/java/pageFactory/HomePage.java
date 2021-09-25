@@ -73,6 +73,7 @@ public class HomePage {
 	@FindBy(how = How.XPATH, using = ".//p[@class='alert alert-warning'][contains(.,'Your shopping')]")
 	private static WebElement assertCarrinhoVazio;
 
+	
 	private void inputBuscaPorProduto(String buscarProduto) {
 		wait.until(ExpectedConditions.visibilityOf(inputBuscaProduto));
 		inputBuscaProduto.sendKeys(buscarProduto);
@@ -202,5 +203,4 @@ public class HomePage {
 	public void inserirProdutoEVoltarAction() {
 		inserirProdAoCarrinhoEVoltar();
 	}
-
 }

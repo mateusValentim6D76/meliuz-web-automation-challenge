@@ -1,11 +1,9 @@
 package steps;
 
-import java.io.FileReader;
 
 import cucumber.TestContext;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import manager.FileReaderManager;
 
 public class Hooks {
 
@@ -17,7 +15,8 @@ public class Hooks {
 	 
 	 @Before
 	 public void BeforeSteps() {
-
+		 String msg = "Iniciando cenário";
+		 System.out.println(msg);
 	 }
 	 
 	 @After
