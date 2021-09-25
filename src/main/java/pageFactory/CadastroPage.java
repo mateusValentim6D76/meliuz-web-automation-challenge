@@ -1,5 +1,6 @@
 package pageFactory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -75,9 +76,6 @@ public class CadastroPage {
 
 	@FindBy(how = How.ID, using = "city")
 	private static WebElement cidade;
-
-	@FindBy(how = How.ID, using = "uniform-id_state")
-	private static WebElement selectEstado;
 
 	@FindBy(how = How.ID, using = "postcode")
 	private static WebElement cep;
@@ -185,9 +183,9 @@ public class CadastroPage {
 		js.scrollDown();
 	}
 
-	private void selectEstado(String estado) {
-		select = new Select(selectEstado);
-		select.selectByValue(estado);
+	private void selectEstado(String estado) throws InterruptedException {
+		WebElement elemento = driver.findElement(By.xpath(".//select[@id='id_state']/option[contains(.,'"+estado+"')]"));
+		elemento.click();
 	}
 
 	private void inputCep(String iCep) {
@@ -195,8 +193,8 @@ public class CadastroPage {
 	}
 
 	private void selectPais(String pais) {
-		actions.moveToElement(selectPais);
 		wait.until(ExpectedConditions.visibilityOf(selectPais));
+		select = new Select(selectPais);
 		select.selectByVisibleText(pais);
 	}
 
@@ -213,7 +211,8 @@ public class CadastroPage {
 	}
 
 	private void inputReferencia(String ref) {
-		celular.sendKeys(ref);
+		referencia.clear();
+		referencia.sendKeys(ref);
 	}
 
 	private void btnRegistrar_() {
@@ -240,12 +239,13 @@ public class CadastroPage {
 		inputEndereco(cadastroPojo.endereco);
 		inputEndereco2(cadastroPojo.endereco2);
 		inputCidade(cadastroPojo.cidade);
-		selectPais(cadastroPojo.pais);
+		//selectPais(cadastroPojo.pais);
 		inputCep(cadastroPojo.cep);
 		selectEstado(cadastroPojo.estado);
 		inputInfoAdicional(cadastroPojo.infoAdicional);
 		inputTelefone(cadastroPojo.telefone);
 		inputCelular(cadastroPojo.celular);
 		inputReferencia(cadastroPojo.referencia);
+		Thread.sleep(3000);
 	}
 }

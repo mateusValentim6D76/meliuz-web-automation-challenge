@@ -72,6 +72,9 @@ public class HomePage {
 
 	@FindBy(how = How.XPATH, using = ".//p[@class='alert alert-warning'][contains(.,'Your shopping')]")
 	private static WebElement assertCarrinhoVazio;
+	
+	@FindBy(how = How.CSS, using = "section#social_block ul li.facebook")
+	private static WebElement logoFacebook;
 
 	
 	private void inputBuscaPorProduto(String buscarProduto) {
@@ -128,6 +131,10 @@ public class HomePage {
 
 	private void clickLogo() {
 		headerLogo.click();
+	}
+	
+	private void logoFace() {
+		logoFacebook.click();
 	}
 
 	////// Actions //////
@@ -202,5 +209,9 @@ public class HomePage {
 
 	public void inserirProdutoEVoltarAction() {
 		inserirProdAoCarrinhoEVoltar();
+	}
+	
+	public void clicarLogoFacebookAction() {
+		logoFace();
 	}
 }
